@@ -10,10 +10,10 @@ class PowerUpManager:
     self.spawn_interval = spawn_interval
     self.max_spawns = max_spawns
 
-    self.last_spawn_time = spawn_interval - 1
+    self.last_spawn_time = time.time()
 
     self.active_powerups = {}
-    self.powerup_types = [PowerUps.STRIKER_SPEED_BOOST, PowerUps.STRIKER_SMASH_HIT, PowerUps.STRIKER_LENGTH_UP, PowerUps.ENEMY_STRIKER_LENGTH_DOWN, PowerUps.ENEMY_INVERT_CONTROLS]
+    self.powerup_types = list(PowerUps)
 
     self.screen = screen
 
