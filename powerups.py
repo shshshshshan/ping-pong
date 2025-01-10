@@ -153,17 +153,18 @@ class EnemySlowDown(PowerUp):
 
 class PowerUps(Enum):
 
-  STRIKER_SPEED_BOOST = (StrikerSpeedBoost, 5, 10, 15, 'blue', False)
-  STRIKER_SMASH_HIT = (StrikerSmashHit, 5, 5, 12, 'green', False)
-  STRIKER_LENGTH_UP = (StrikerLengthUp, 7, 7, 15, 'purple', False)
-  ENEMY_STRIKER_LENGTH_DOWN = (EnemyStrikerLengthDown, 7, 7, 15, 'orange', True)
-  ENEMY_INVERT_CONTROLS = (EnemyInvertControls, 5, 5, 15, 'red', True)
-  ENEMY_SLOW_DOWN = (EnemySlowDown, 5, 10, 15, 'cyan', True)
+  STRIKER_SPEED_BOOST = (StrikerSpeedBoost, 5, 10, 15, 'blue', False, 0.5)
+  STRIKER_SMASH_HIT = (StrikerSmashHit, 5, 5, 12, 'green', False, 0.3)
+  STRIKER_LENGTH_UP = (StrikerLengthUp, 7, 7, 15, 'purple', False, 0.6)
+  ENEMY_STRIKER_LENGTH_DOWN = (EnemyStrikerLengthDown, 7, 7, 15, 'orange', True, 0.4)
+  ENEMY_INVERT_CONTROLS = (EnemyInvertControls, 5, 5, 15, 'red', True, 0.2)
+  ENEMY_SLOW_DOWN = (EnemySlowDown, 5, 10, 15, 'cyan', True, 0.4)
 
-  def __init__(self, power, duration, timeout, radius, color, affects_enemy):
+  def __init__(self, power, duration, timeout, radius, color, affects_enemy, spawn_rate):
     self.power = power
     self.duration = duration
     self.timeout = timeout
     self.radius = radius
     self.color = color
     self.affects_enemy = affects_enemy
+    self.spawn_rate = spawn_rate

@@ -44,10 +44,12 @@ class PowerUpManager:
 
     now = time.time()
     if now - self.last_spawn_time >= self.spawn_interval:
-      posx = random.randint(50, self.screen.get_width() - 50)
-      posy = random.randint(150, self.screen.get_height() - 50)
+      posx = random.randint(100, self.screen.get_width() - 100)
+      posy = random.randint(150, self.screen.get_height() - 150)
 
-      powerup_type = random.choice(self.powerup_types)
+      spawn_rates = [powerup.spawn_rate for powerup in self.powerup_types]
+      powerup_type = random.choices(self.powerup_types, weights=spawn_rates, k=1)[0]
+
       powerup_id = uuid4()
       new_powerup = {
         'power': powerup_type.power(posx, posy, duration=powerup_type.duration, timeout=powerup_type.timeout, radius=powerup_type.radius, color=powerup_type.color, screen=self.screen),
@@ -76,5 +78,5 @@ class PowerUpManager:
       del self.active_powerups[disposed_id]
 
   def reset(self):
-    self.last_spawn_time = self.spawn_interval - 1
+    self.last_spawn_time = time.time()
     self.active_powerups = {}
