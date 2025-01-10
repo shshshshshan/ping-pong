@@ -1,4 +1,5 @@
 import pygame as pg
+from copy import deepcopy
 
 class Striker:
 
@@ -24,7 +25,11 @@ class Striker:
     self.screen = screen
 
     self.y_fac = 0
+
+    self.base_controls = deepcopy(controls)
     self.controls = controls
+
+    self.y_edge_space = 35
 
   def keydown(self, key):
     if key not in self.controls:
@@ -49,11 +54,11 @@ class Striker:
   def update(self):
     self.posy += self.speed * self.y_fac
 
-    if self.posy <= 0:
-      self.posy = 0
+    if self.posy <= self.y_edge_space:
+      self.posy = self.y_edge_space
 
-    elif self.posy + self.h >= self.screen.get_height():
-      self.posy = self.screen.get_height() - self.h
+    elif self.posy + self.h >= self.screen.get_height() - self.y_edge_space:
+      self.posy = (self.screen.get_height() - self.h) - self.y_edge_space
 
     self.rect = pg.Rect(self.posx, self.posy, self.w, self.h)
 
@@ -70,5 +75,6 @@ class Striker:
     self.color = self.base_color
     self.smash = False
     self.speed = self.base_speed
+    self.controls = deepcopy(self.base_controls)
     self.w = self.base_w
     self.h = self.base_h
