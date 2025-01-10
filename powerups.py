@@ -136,6 +136,21 @@ class EnemyInvertControls(PowerUp):
       [self.target.controls[1], self.target.controls[0]] = [self.target.controls[0], self.target.controls[1]]
       self.reverted = True
 
+class EnemySlowDown(PowerUp):
+
+  def __init__(self, posx, posy, duration, timeout, radius, color, screen):
+    super().__init__(posx, posy, duration, timeout, radius, color, screen)
+
+  def collected(self, target):
+    super().collected(target)
+    self.target.speed /= 1.5
+
+  def update(self):
+    super().update()
+    if self.expired and not self.reverted:
+      self.target.speed *= 1.5
+      self.reverted = True
+
 class PowerUps(Enum):
 
   STRIKER_SPEED_BOOST = (StrikerSpeedBoost, 5, 10, 15, 'blue', False)
@@ -143,6 +158,7 @@ class PowerUps(Enum):
   STRIKER_LENGTH_UP = (StrikerLengthUp, 7, 7, 15, 'purple', False)
   ENEMY_STRIKER_LENGTH_DOWN = (EnemyStrikerLengthDown, 7, 7, 15, 'orange', True)
   ENEMY_INVERT_CONTROLS = (EnemyInvertControls, 5, 5, 15, 'red', True)
+  ENEMY_SLOW_DOWN = (EnemySlowDown, 5, 10, 15, 'cyan', True)
 
   def __init__(self, power, duration, timeout, radius, color, affects_enemy):
     self.power = power
