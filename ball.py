@@ -29,7 +29,7 @@ class Ball:
     self.posy += self.speed * self.y_fac
 
     if (self.posy - self.r) <= 10 or \
-       (self.posy + self.r) >= self.screen.get_height() + 10:
+       (self.posy + self.r) >= self.screen.get_height() - 10:
       self.y_fac *= -1
 
     if (self.posx - self.r) <= 0:
