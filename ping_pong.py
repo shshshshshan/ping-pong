@@ -28,9 +28,10 @@ ball_speed = 6
 
 background = 'black'
 
+player_space_from_edge = 40
 
-p1 = Striker(20, screen.get_height() // 2, player_w, player_h, player_speed, 'white', screen, [pg.K_w, pg.K_s])
-p2 = Striker(screen.get_width() - 30, screen.get_height() // 2, player_w, player_h, player_speed, 'white', screen, [pg.K_UP, pg.K_DOWN])
+p1 = Striker(player_space_from_edge, screen.get_height() // 2, player_w, player_h, player_speed, 'white', screen, [pg.K_w, pg.K_s])
+p2 = Striker(screen.get_width() - (player_space_from_edge + 10), screen.get_height() // 2, player_w, player_h, player_speed, 'white', screen, [pg.K_UP, pg.K_DOWN])
 
 players = [p1, p2]
 
