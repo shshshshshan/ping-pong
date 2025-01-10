@@ -9,7 +9,7 @@ from powerup_manager import PowerUpManager
 ## --- Setup --- ##
 pg.init()
 
-w, h = 1280, 640
+w, h = 1020, 920
 
 font20 = pg.font.Font('freesansbold.ttf', 20)
 
