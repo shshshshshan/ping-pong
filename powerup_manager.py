@@ -13,7 +13,7 @@ class PowerUpManager:
     self.last_spawn_time = spawn_interval - 1
 
     self.active_powerups = {}
-    self.powerup_types = [PowerUps.STRIKER_SPEED_BOOST, PowerUps.STRIKER_SMASH_HIT, PowerUps.STRIKER_LENGTH_UP, PowerUps.ENEMY_STRIKER_LENGTH_DOWN]
+    self.powerup_types = [PowerUps.STRIKER_SPEED_BOOST, PowerUps.STRIKER_SMASH_HIT, PowerUps.STRIKER_LENGTH_UP, PowerUps.ENEMY_STRIKER_LENGTH_DOWN, PowerUps.ENEMY_INVERT_CONTROLS]
 
     self.screen = screen
 
