@@ -1,7 +1,4 @@
 import pygame as pg
-import random
-import math
-import time
 from striker import Striker
 from ball import Ball
 from powerup_manager import PowerUpManager
